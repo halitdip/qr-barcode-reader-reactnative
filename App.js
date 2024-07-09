@@ -4,8 +4,8 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './views/Home';
-import Davalar from './views/Davalar'
 import Camera from './views/camera'
+import infoPage from './views/infoPage'
 
 const Stack = createNativeStackNavigator();
 
@@ -14,7 +14,7 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="HomeScreen"  > 
         <Stack.Screen name="Home" component={HomeScreen}  options={{ headerShown: false }}/>
-        <Stack.Screen name="Davalar" component={Davalar} options={{ headerShown: false }} />
+        <Stack.Screen name="infoPage" component={infoPage} options={{ headerShown: false }} />
         <Stack.Screen name="Camera" component={Camera} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
