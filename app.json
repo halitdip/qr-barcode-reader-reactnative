@@ -21,7 +21,12 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/a101logo.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO"
+      ],
+      "package": "com.halitdip.qrapphalit2"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -38,6 +43,11 @@
           "recordAudioAndroid": true
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "c3adf79e-d74e-4f60-9cdc-5b70fa9cc02a"
+      }
+    }
   }
 }
