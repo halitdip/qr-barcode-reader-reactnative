@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './views/Home';
 import Camera from './views/camera'
 import infoPage from './views/infoPage'
+import fileUpload from './views/fileUpload'
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +17,8 @@ function App() {
         <Stack.Screen name="Home" component={HomeScreen}  options={{ headerShown: false }}/>
         <Stack.Screen name="infoPage" component={infoPage} options={{ headerShown: false }} />
         <Stack.Screen name="Camera" component={Camera} options={{ headerShown: false }} />
+        <Stack.Screen name="fileUpload" component={fileUpload} options={{ headerShown: false }} />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );

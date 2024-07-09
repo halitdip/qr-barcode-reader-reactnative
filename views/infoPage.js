@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, ScrollView, StyleSheet ,TouchableOpacity} from 'react-native';
 import * as Device from 'expo-device';
-
+import { useNavigation } from '@react-navigation/native';
 const DeviceInfo = () => {
   const [deviceInfo, setDeviceInfo] = useState({});
+
+  const navigation = useNavigation();
 
   useEffect(() => {
     const getDeviceInfo = async () => {
@@ -13,7 +15,7 @@ const DeviceInfo = () => {
         işletimSistemi: Device.osName,
         işletimSistemiSürümü: Device.osVersion,
         işletimSistemiYapiKimliği: Device.osBuildId,
-        toplamBellek: Number(Device.totalMemory/1000000),
+        toplamBellek: Number(Device.totalMemory / 1000000),
         desteklenenCpuMimarileri: Device.supportedCpuArchitectures,
         cihazAdi: Device.deviceName,
         fizikselCihaz: Device.isDevice,
@@ -30,7 +32,12 @@ const DeviceInfo = () => {
 
     getDeviceInfo();
   }, []);
-  console.log(Device)
+
+
+
+  const gofileupload = () => {
+    navigation.navigate('fileUpload')
+  };
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {Object.entries(deviceInfo).map(([key, value]) => (
@@ -38,6 +45,11 @@ const DeviceInfo = () => {
           {key}: {Array.isArray(value) ? value.join(', ') : value}
         </Text>
       ))}
+
+
+      <TouchableOpacity onPress={gofileupload} style={{marginTop:30,backgroundColor:'red',padding:10}} >
+        <Text style={styles.text}>Dosya İşlemleri</Text>
+      </TouchableOpacity>
     </ScrollView>
   );
 };
