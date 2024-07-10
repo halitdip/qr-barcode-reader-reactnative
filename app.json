@@ -29,7 +29,7 @@
       "package": "com.halitdip.qrapphalit2"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/a101logo.png"
     },
     "infoPlist": {
       "NSCameraUsageDescription": "This app uses the camera to scan barcodes on event tickets."
@@ -42,7 +42,8 @@
           "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone",
           "recordAudioAndroid": true
         }
-      ]
+      ],
+      "expo-asset"
     ],
     "extra": {
       "eas": {

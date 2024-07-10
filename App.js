@@ -8,6 +8,7 @@ import Camera from './views/camera'
 import infoPage from './views/infoPage'
 import fileUpload from './views/fileUpload'
 import ikwebview from './views/ikwebview'
+import sqlite from './views/sqlite'
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +21,7 @@ function App() {
         <Stack.Screen name="Camera" component={Camera} options={{ headerShown: false }} />
         <Stack.Screen name="fileUpload" component={fileUpload} options={{ headerShown: false }} />
         <Stack.Screen name="ikwebview" component={ikwebview} options={{ headerShown: false }} />
+        <Stack.Screen name="sqlite" component={sqlite} options={{ headerShown: false }} />
 
       </Stack.Navigator>
     </NavigationContainer>

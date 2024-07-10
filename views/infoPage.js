@@ -1,8 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, ScrollView, StyleSheet ,TouchableOpacity} from 'react-native';
+import { View, Text, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
 import * as Device from 'expo-device';
 import { useNavigation } from '@react-navigation/native';
+
+import * as SQLite from 'expo-sqlite';
+const db = SQLite.openDatabaseSync('myDatabase.db');
+
 const DeviceInfo = () => {
+
+  const [storedText, setStoredText] = useState([]);
+
+  const fetchText = async () => {
+    const allRows = await db.getAllAsync('SELECT * FROM test');
+    setStoredText(JSON.stringify(allRows))
+
+    for (const row of allRows) {
+      console.log(row.id, row.value, row.intValue);
+    }
+
+  };
+
+  fetchText()
   const [deviceInfo, setDeviceInfo] = useState({});
 
   const navigation = useNavigation();
@@ -10,7 +28,7 @@ const DeviceInfo = () => {
   useEffect(() => {
     const getDeviceInfo = async () => {
       const info = {
-        deviceId : Device.osBuildId,
+        deviceId: Device.osBuildId,
         marka: Device.brand,
         model: Device.modelName,
         işletimSistemi: Device.osName,
@@ -41,6 +59,8 @@ const DeviceInfo = () => {
   };
   return (
     <ScrollView contentContainerStyle={styles.container}>
+          
+
       {Object.entries(deviceInfo).map(([key, value]) => (
         <Text style={styles.text} key={key}>
           {key}: {Array.isArray(value) ? value.join(', ') : value}
@@ -48,9 +68,10 @@ const DeviceInfo = () => {
       ))}
 
 
-      <TouchableOpacity onPress={gofileupload} style={{marginTop:30,backgroundColor:'red',padding:10}} >
+      <TouchableOpacity onPress={gofileupload} style={{ marginTop: 30, backgroundColor: 'red', padding: 10 }} >
         <Text style={styles.text}>Dosya İşlemleri</Text>
       </TouchableOpacity>
+      {storedText ? <Text style={styles.storedText}>{storedText}</Text> : null}
     </ScrollView>
   );
 };
@@ -66,6 +87,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 10,
   },
+  storedText: {
+    marginTop: 16,
+    fontSize: 16,
+},
 });
 
 export default DeviceInfo;

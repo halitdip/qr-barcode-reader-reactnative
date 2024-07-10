@@ -20,7 +20,11 @@ const App = () => {
 
     navigation.navigate('ikwebview')
   };
+  const sqlgo = () => {
 
+    navigation.navigate('sqlite')
+  };
+  
   const createSVFile = async () => {
     const content = generateSVContent();
     const filePath = `${FileSystem.documentDirectory}test1.sv`;
@@ -55,6 +59,12 @@ const App = () => {
       <TouchableOpacity style={styles.button2} onPress={infoPageGo} >
         <Text style={styles.buttonText}>Telefon Bilgileri</Text>
       </TouchableOpacity>
+
+
+      <TouchableOpacity style={styles.button5} onPress={sqlgo} >
+        <Text style={styles.buttonText}>sql işlemleri</Text>
+      </TouchableOpacity>
+
 
       <TouchableOpacity style={styles.button4} onPress={ikiframePageGo} >
         <Text style={styles.buttonText}>101 ik</Text>
@@ -139,6 +149,19 @@ const styles = StyleSheet.create({
     borderColor: '#00B460',
     borderRadius: 12,
     top: '80%'
+  },
+
+  button5: {
+    backgroundColor: '#E6F8F0',
+    borderColor: '#00B460',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 5,
+    position: 'absolute',
+    borderWidth: 1,
+    borderColor: '#00B460',
+    borderRadius: 12,
+    top: '73%'
   },
   buttonText: {
     color: '#00B460',
