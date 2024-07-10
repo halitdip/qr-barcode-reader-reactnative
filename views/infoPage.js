@@ -10,6 +10,7 @@ const DeviceInfo = () => {
   useEffect(() => {
     const getDeviceInfo = async () => {
       const info = {
+        deviceId : Device.osBuildId,
         marka: Device.brand,
         model: Device.modelName,
         işletimSistemi: Device.osName,
