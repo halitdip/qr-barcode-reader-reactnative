@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, StyleSheet, Button, Modal, SafeAreaView, Platform, TouchableOpacity, ScrollView } from "react-native";
+import { Text, View, StyleSheet, Button, Modal, SafeAreaView, Platform, TouchableOpacity, ScrollView,Dimensions } from "react-native";
 import { CameraView, Camera } from "expo-camera";
 
 export default function App() {
@@ -23,8 +23,14 @@ export default function App() {
     }, []);
 
     const handleBarCodeScanned = async (onBarcodeScanningResult) => {
-        setBarcodeData(onBarcodeScanningResult.boundingBox);
-        console.log(onBarcodeScanningResult.boundingBox);
+
+        if(Platform.OS == "android")
+            setBarcodeData(onBarcodeScanningResult.boundingBox);
+        else {
+            setBarcodeData(onBarcodeScanningResult.bounds);
+            console.log(onBarcodeScanningResult.bounds)
+        }
+
 
         await setQrread(onBarcodeScanningResult.data)
         if (!qrs.includes(onBarcodeScanningResult.data)) {
@@ -50,6 +56,7 @@ export default function App() {
         setModalVisible(false);
         setScanned(true)
     };
+    const windowWidth = Dimensions.get('window').width;
 
     return (
         <SafeAreaView style={styles.container}>
@@ -69,16 +76,16 @@ export default function App() {
                                 styles.boundingBox,
                                 {
 
-                                    height: Number(barcodeData.size.width),
-                                    width: Number(barcodeData.size.height),
-                                    right: Number(barcodeData.origin.y),
-                                    top: Number(barcodeData.origin.x),
+                                    height: Platform.OS == "android" ? Number(barcodeData.size.width) : Number(barcodeData.size.height),
+                                    width:  Platform.OS == "android" ? Number(barcodeData.size.height) : Number(barcodeData.size.width),
+                                    right: Platform.OS == "android" ? Number(barcodeData.origin.y) :  (windowWidth  - Number(barcodeData.origin.x) ) - (Platform.OS == "android" ? Number(barcodeData.size.height) : Number(barcodeData.size.width)  ),
+                                    top: Platform.OS == "android" ? Number(barcodeData.origin.x) : Number(barcodeData.origin.y),
                                 },
                             ]}
                         >
-                            <Text style={{ textAlign: 'center', backgroundColor: 'green' }}>
+                            {/* <Text style={{ textAlign: 'center', backgroundColor: 'green' }}>
                                 {qrread}
-                            </Text>
+                            </Text> */}
                         </View>
 
                     )}

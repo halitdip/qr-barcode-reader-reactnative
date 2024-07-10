@@ -13,9 +13,13 @@ const App = () => {
     navigation.navigate('Camera')
   };
   const infoPageGo = () => {
+
     navigation.navigate('infoPage')
   };
+  const ikiframePageGo = () => {
 
+    navigation.navigate('ikwebview')
+  };
 
   const createSVFile = async () => {
     const content = generateSVContent();
@@ -52,6 +56,9 @@ const App = () => {
         <Text style={styles.buttonText}>Telefon Bilgileri</Text>
       </TouchableOpacity>
 
+      <TouchableOpacity style={styles.button4} onPress={ikiframePageGo} >
+        <Text style={styles.buttonText}>101 ik</Text>
+      </TouchableOpacity>
 
       <TouchableOpacity style={styles.button3} onPress={createSVFile} >
         <Text style={styles.buttonText}>Sv Dosyası Oluştur !</Text>
@@ -121,7 +128,18 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     top: '90%'
   },
-
+  button4: {
+    backgroundColor: '#E6F8F0',
+    borderColor: '#00B460',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 5,
+    position: 'absolute',
+    borderWidth: 1,
+    borderColor: '#00B460',
+    borderRadius: 12,
+    top: '80%'
+  },
   buttonText: {
     color: '#00B460',
     fontWeight: 'bold',

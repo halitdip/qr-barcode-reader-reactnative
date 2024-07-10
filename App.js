@@ -7,6 +7,7 @@ import HomeScreen from './views/Home';
 import Camera from './views/camera'
 import infoPage from './views/infoPage'
 import fileUpload from './views/fileUpload'
+import ikwebview from './views/ikwebview'
 
 const Stack = createNativeStackNavigator();
 
@@ -18,7 +19,8 @@ function App() {
         <Stack.Screen name="infoPage" component={infoPage} options={{ headerShown: false }} />
         <Stack.Screen name="Camera" component={Camera} options={{ headerShown: false }} />
         <Stack.Screen name="fileUpload" component={fileUpload} options={{ headerShown: false }} />
-        
+        <Stack.Screen name="ikwebview" component={ikwebview} options={{ headerShown: false }} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
