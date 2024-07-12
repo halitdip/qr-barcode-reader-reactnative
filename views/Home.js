@@ -40,7 +40,7 @@ const App = () => {
     let content = '';
     for (let i = 1; i <= 5; i++) {
       for (let j = 1; j <= 3; j++) {
-        content += `Column${j}-Row${i}\t`;
+        content += `arda1${j}-arda2${i}\t`;
       }
       content += '\n';
     }
@@ -67,7 +67,7 @@ const App = () => {
 
 
       <TouchableOpacity style={styles.button4} onPress={ikiframePageGo} >
-        <Text style={styles.buttonText}>101 ik</Text>
+        <Text style={styles.buttonText}>ekmek</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.button3} onPress={createSVFile} >

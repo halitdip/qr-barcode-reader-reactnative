@@ -15,13 +15,13 @@ const Stack = createNativeStackNavigator();
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="HomeScreen"  > 
-        <Stack.Screen name="Home" component={HomeScreen}  options={{ headerShown: false }}/>
-        <Stack.Screen name="infoPage" component={infoPage} options={{ headerShown: false }} />
-        <Stack.Screen name="Camera" component={Camera} options={{ headerShown: false }} />
-        <Stack.Screen name="fileUpload" component={fileUpload} options={{ headerShown: false }} />
-        <Stack.Screen name="ikwebview" component={ikwebview} options={{ headerShown: false }} />
-        <Stack.Screen name="sqlite" component={sqlite} options={{ headerShown: false }} />
+      <Stack.Navigator initialRouteName="HomeScreen" screenOptions={{headerShown: false}} > 
+        <Stack.Screen name="Home" component={HomeScreen}  />
+        <Stack.Screen name="infoPage" component={infoPage}  />
+        <Stack.Screen name="Camera" component={Camera}  />
+        <Stack.Screen name="fileUpload" component={fileUpload}  />
+        <Stack.Screen name="ikwebview" component={ikwebview}  />
+        <Stack.Screen name="sqlite" component={sqlite}  />
 
       </Stack.Navigator>
     </NavigationContainer>
